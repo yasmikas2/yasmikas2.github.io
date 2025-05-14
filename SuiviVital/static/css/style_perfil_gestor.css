@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #3a3939;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Caixa branca central */
+.perfil-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Informações do perfil */
+.perfil-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.foto-perfil {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+p {
+    margin: 0;
+    font-size: 18px;
+    color: #777;
+}
+
+/* Botões */
+.perfil-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%; /* Garante que ocupe toda a largura da caixa branca */
+    align-items: center;
+}
+
+.perfil-buttons .btn {
+    padding: 12px 20px;
+    background-color: #3d7fad;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 90%; /* Botão ocupa 90% da largura do container */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover */
+.perfil-buttons .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Botão com cor customizada */
+.perfil-buttons .btn.custom-color {
+    background-color: #2839a7;
+    color: #000;
+}
+
+.perfil-buttons .btn.custom-color:hover {
+    background-color: #2839a7;
+    color: #fff;
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 600px) {
+    .perfil-container {
+        padding: 20px 15px;
+        width: 95%;
+        max-width: none;
+    }
+
+    .foto-perfil {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 12px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .perfil-buttons .btn {
+        font-size: 14px;
+        padding: 10px 15px;
+        width: 100%; /* Botões ficam maiores em celular */
+    }
+}
+
+@media (max-width: 360px) {
+    .foto-perfil {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .perfil-buttons .btn {
+        font-size: 13px;
+        padding: 8px 12px;
+        width: 100%;
+    }
+}
