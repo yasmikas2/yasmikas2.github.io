@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinos</title>
+    <link rel="stylesheet" href="/static/css/style_treinos.css">
+    <!-- Font Awesome para ícone de home -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <a href="{{ url_for('menu_aluno') }}" class="home-btn">
+            <i class="fas fa-home"></i>
+        </a>
+        <h1>Treinos</h1>
+    </div>
+
+    <div class="container">
+        <a href="{{ url_for('peito_triceps') }}" class="btn-treino">Peito + Tríceps</a>
+        <a href="{{ url_for('costas_biceps') }}" class="btn-treino">Costas + Bíceps</a>
+        <a href="{{ url_for('ombro_abdomen') }}" class="btn-treino">Ombro + Abdomen</a>
+        <a href="{{ url_for('pernas') }}" class="btn-treino">Pernas</a>
+        <a href="{{ url_for('gluteo') }}" class="btn-treino">Glúteo</a>
+    </div>
+</body>
+</html>
