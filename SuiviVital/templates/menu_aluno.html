@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Aluno</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style_menu_aluno.css">
+
+    <!-- FullCalendar -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.js"></script>
+
+</head>
+<body>
+
+<div class="retangulo">
+    <div class="topo">
+        <img src="/static/images/fotoAluno.png" alt="Foto do Aluno">
+        <div class="dados-aluno">
+            <p>{{ nome }}</p>
+            <p>{{ cpf }}</p>
+        </div>
+    </div>
+
+    <div class="fundo-branco">
+        <input type="hidden" id="cpf" value="{{ cpf }}">
+        <div id="calendar"></div>
+
+        <form action="{{ url_for('treinos') }}" method="get">
+            <button type="submit" class="btn-treinos">Ver Treinos</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const presencas = {{ presencas | tojson }};
+        const faltas = {{ faltas | tojson }};
+        const cpf = document.getElementById("cpf").value;
+
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: ''
+            },
+            selectable: true,
+            selectHelper: true,
+            select: function (start) {
+                const dataSelecionada = moment(start).format('YYYY-MM-DD');
+
+                // Verificar se a data já foi marcada como presença ou falta
+                if (presencas.includes(dataSelecionada)) {
+                    // Caso seja presença, altere para falta
+                    alterarPresencaOuFalta(dataSelecionada, 'falta');
+                } else if (faltas.includes(dataSelecionada)) {
+                    // Caso seja falta, altere para presença
+                    alterarPresencaOuFalta(dataSelecionada, 'presenca');
+                } else {
+                    // Caso não tenha sido marcado, registre como presença
+                    alterarPresencaOuFalta(dataSelecionada, 'presenca');
+                }
+
+                $('#calendar').fullCalendar('unselect');
+            },
+            events: function (start, end, timezone, callback) {
+                let eventos = [];
+
+                // Adicionar os eventos de presença (verde)
+                presencas.forEach(function (data) {
+                    eventos.push({
+                        title: 'Presença',
+                        start: data,
+                        color: 'green'
+                    });
+                });
+
+                // Adicionar os eventos de falta (vermelho)
+                faltas.forEach(function (data) {
+                    eventos.push({
+                        title: 'Falta',
+                        start: data,
+                        color: 'red'
+                    });
+                });
+
+                callback(eventos);
+            }
+        });
+
+        function alterarPresencaOuFalta(data, tipo) {
+            $.ajax({
+                type: 'POST',
+                url: '/registrar_presenca',  // Rota para registrar presença/falta
+                data: {
+                    cpf: cpf,
+                    data: data,
+                    tipo: tipo  // Adiciona o tipo (presença ou falta)
+                },
+                success: function () {
+                    alert(tipo.charAt(0).toUpperCase() + tipo.slice(1) + ' registrada para ' + data);
+                    location.reload();
+                },
+                error: function () {
+                    alert('Erro ao registrar ' + tipo + '.');
+                }
+            });
+        }
+    });
+</script>
+
+<a href="https://linktr.ee/ForcaLocal" target="_blank" class="botao-flutuante" title="Fale com a gente">
+    <i class="fas fa-phone"></i>
+</a>
+</a>
+
+</body>
+</html>

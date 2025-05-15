@@ -1,0 +1,201 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px; /* Espaço para telas pequenas */
+}
+
+.retangulo {
+    width: 360px;
+    max-width: 100%;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Topo com foto e título */
+.topo {
+    background-color: #3d7fad;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.topo img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 3px solid white;
+    max-width: 100%;
+}
+
+/* Dados do aluno */
+.dados-aluno {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-top: 5px;
+    padding: 0 15px;
+}
+
+.dados-aluno h2 {
+    margin-bottom: 0;
+    font-size: 1.4rem;
+}
+
+.dados-aluno p {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+/* Fundo branco do calendário e conteúdo */
+.fundo-branco {
+    background-color: white;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+#calendar {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Botão treinos */
+.btn-treinos {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background-color: #3d7fad;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-treinos:hover {
+    background-color: #0056b3;
+}
+
+/* Botão flutuante */
+.botao-flutuante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #888888;
+    color: white;
+    font-size: 24px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.botao-flutuante:hover {
+    background-color: #555555;
+}
+
+/* ======== RESPONSIVIDADE ======== */
+
+/* Tablets e telas médias */
+@media (max-width: 1024px) {
+    .retangulo {
+        width: 90%;
+        padding: 0 10px;
+    }
+
+    .dados-aluno {
+        font-size: 15px;
+    }
+
+    .btn-treinos {
+        font-size: 15px;
+        padding: 11px;
+    }
+}
+
+/* Celulares grandes */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .retangulo {
+        width: 100%;
+    }
+
+    .topo img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .dados-aluno h2 {
+        font-size: 1.2rem;
+    }
+
+    .dados-aluno {
+        font-size: 14px;
+    }
+
+    .btn-treinos {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .botao-flutuante {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+/* Celulares pequenos e smartphones */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .retangulo {
+        width: 100%;
+    }
+
+    .topo img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .dados-aluno h2 {
+        font-size: 1.1rem;
+    }
+
+    .dados-aluno {
+        font-size: 13px;
+    }
+
+    .btn-treinos {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .botao-flutuante {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
